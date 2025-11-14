@@ -5,7 +5,7 @@ RUN apt-get update \
         apt-transport-https \
         ca-certificates \
         curl \
-        software-properties-common \
+        # software-properties-common \
         python3 \
         python3-pip \
         python3-venv \
@@ -31,6 +31,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y locales
 RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
     dpkg-reconfigure --frontend=noninteractive locales && \
     update-locale LANG=en_US.UTF-8
-ENV LANG en_US.UTF-8
+ENV LANG=en_US.UTF-8
 
 # USER jenkins
