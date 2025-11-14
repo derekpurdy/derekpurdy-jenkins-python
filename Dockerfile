@@ -14,7 +14,7 @@ RUN apt-get update \
         yamllint \
         pylint
 # docker repos
-RUN wget -qO /etc/apt/trusted.gpg.d/docker.gpg https://download.docker.com/linux/ubuntu/gpg && cat /etc/apt/trusted.gpg.d/docker.gpg
+RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/trusted.gpg.d/docker.gpg && cat /etc/apt/trusted.gpg.d/docker.gpg
 #     gpg --dearmor -o /etc/apt/keyrings/docker.gpg \
 # # RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - \
 #     && echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable" >> /etc/apt/sources.list.d/additional-repositories.list \
