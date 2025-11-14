@@ -5,7 +5,6 @@ RUN apt-get update \
         apt-transport-https \
         ca-certificates \
         curl \
-        gpg \
         # software-properties-common \
         python3 \
         python3-pip \
@@ -18,12 +17,6 @@ RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/trusted.
     && cat /etc/apt/trusted.gpg.d/docker.gpg \
     && echo "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/docker.gpg] https://download.docker.com/linux/ubuntu xenial stable" >> /etc/apt/sources.list.d/additional-repositories.list \
     && apt-get update
-#     gpg --dearmor -o /etc/apt/keyrings/docker.gpg \
-# # RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - \
-#     && echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable" >> /etc/apt/sources.list.d/additional-repositories.list \
-#     && echo "deb http://ftp-stud.hs-esslingen.de/ubuntu xenial main restricted universe multiverse" >> /etc/apt/sources.list.d/official-package-repositories.list \
-#     # && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 437D05B5 \
-#     && apt-get update
 # docker
 RUN apt-get -y install docker-ce
 # docker-compose
