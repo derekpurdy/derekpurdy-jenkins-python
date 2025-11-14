@@ -5,6 +5,7 @@ RUN apt-get update \
         apt-transport-https \
         ca-certificates \
         curl \
+        gpg \
         # software-properties-common \
         python3 \
         python3-pip \
