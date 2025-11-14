@@ -14,13 +14,13 @@ RUN apt-get update \
         yamllint \
         pylint
 # docker repos
-RUN mkdir -m 0755 -p /etc/apt/keyrings/ && curl -fsSL https://download.docker.com/linux/ubuntu/gpg |
-    gpg --dearmor -o /etc/apt/keyrings/docker.gpg \
-# RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - \
-    && echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable" >> /etc/apt/sources.list.d/additional-repositories.list \
-    && echo "deb http://ftp-stud.hs-esslingen.de/ubuntu xenial main restricted universe multiverse" >> /etc/apt/sources.list.d/official-package-repositories.list \
-    # && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 437D05B5 \
-    && apt-get update
+RUN wget -qO /etc/apt/trusted.gpg.d/docker.gpg https://download.docker.com/linux/ubuntu/gpg && cat /etc/apt/trusted.gpg.d/docker.gpg
+#     gpg --dearmor -o /etc/apt/keyrings/docker.gpg \
+# # RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - \
+#     && echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable" >> /etc/apt/sources.list.d/additional-repositories.list \
+#     && echo "deb http://ftp-stud.hs-esslingen.de/ubuntu xenial main restricted universe multiverse" >> /etc/apt/sources.list.d/official-package-repositories.list \
+#     # && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 437D05B5 \
+#     && apt-get update
 # docker
 RUN apt-get -y install docker-ce
 # docker-compose
