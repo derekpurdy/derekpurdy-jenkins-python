@@ -1,12 +1,12 @@
 name: Build Jenkins with Python
 
 on:
+  schedule:
+    - cron:  '30 0 * * *'
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-  schedule:
-    - cron:  '30 0 * * *'
 
 env:
   REGISTRY: ghcr.io
@@ -37,6 +37,7 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         
     - name: Build and push
+      id: build-and-push
       uses: docker/build-push-action@v6
       with:
         push: true
